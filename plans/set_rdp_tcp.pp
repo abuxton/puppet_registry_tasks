@@ -10,7 +10,7 @@ plan puppet_registry_tasks::set_rdp_tcp(
   apply($nodes){
     registry_value { 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber':
       ensure => present,
-      type   => decimal,
+      type   => '(default)',
       data   => $port,
       notify => Exec['restart-computer']
     }
