@@ -14,10 +14,11 @@ plan puppet_registry_tasks::set_rdp_tcp(
       data   => $port,
       notify => Exec['restart-computer']
     }
-    exec { 'restart-computer':
-      command     => "Restart-Computer -computerName $facts['hostname']",
-      provider    => powershell,
-      refreshonly => true,
+    # exec { 'restart-computer':
+    #   command     => "Restart-Computer -computerName $::hostname",
+    #   provider    => powershell,
+    #   refreshonly => true,
     }
+    run_task('reboot', $nodes, message => 'changed rdp_tcp key, restarting')
   }
 }
