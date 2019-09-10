@@ -5,11 +5,8 @@ plan puppet_registry_tasks::set_rdp_tcp(
   Integer    $port  = 3389,
 ){
 
- apply_prep($nodes)
+  apply_prep($nodes)
 
-  apply($nodes){
-    include chocolatey
-  }
   apply($nodes){
     registry_value { 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber':
       ensure => present,
