@@ -12,7 +12,7 @@ plan puppet_registry_tasks::set_rdp_tcp(
       ensure => present,
       type   => 'string',
       data   => $port,
-      notify => Exec['restart-computer']
+      #notify => Exec['restart-computer']
     }
     # exec { 'restart-computer':
     #   command     => "Restart-Computer -computerName $::hostname",
