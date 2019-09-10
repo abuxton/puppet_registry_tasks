@@ -2,7 +2,7 @@
 # https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port
 plan puppet_registry_tasks::set_rdp_tcp(
   TargetSpec $nodes,
-  Integer    $port  = 3389,
+  String    $port  = '3389',
 ){
 
   apply_prep($nodes)
