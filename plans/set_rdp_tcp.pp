@@ -19,6 +19,6 @@ plan puppet_registry_tasks::set_rdp_tcp(
     #   provider    => powershell,
     #   refreshonly => true,
     }
-    run_task('reboot', $nodes, message => 'changed rdp_tcp key, restarting')
-  }
+  run_task('reboot', $nodes, message => 'changed rdp_tcp key, restarting')
 }
+
