@@ -10,12 +10,12 @@ plan puppet_registry_tasks::set_rdp_tcp(
   apply($nodes){
     registry_value { 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber':
       ensure => present,
-      type   => '(default)',
+      type   => 'string',
       data   => $port,
       notify => Exec['restart-computer']
     }
     exec { 'restart-computer':
-      command     => ' Restart-Computer -computerName YourServer',
+      command     => "Restart-Computer -computerName $facts['hostname']",
       provider    => powershell,
       refreshonly => true,
     }
